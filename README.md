@@ -1,4 +1,4 @@
-# ntegrando uma API Flask com Microsoft OpenAI e Azure Cognitive Search: Hands-On
+# Integrando uma API Flask com Microsoft OpenAI e Azure Cognitive Search: Hands-On
 
 Projeto voltado para inteligência artificial com uso de documentos para 
 conversação com linguagem natual e LLM (Large Language Model).
