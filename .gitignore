@@ -1,0 +1,49 @@
+# Bytecode Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Arquivos de ambiente virtual
+venv/
+env/
+ENV/
+.pytest_cache/
+.coverage
+
+# python Notebooks
+*.ipynb
+
+# Diretórios e arquivos de configuração do Docker
+.dockerignore
+Dockerfile.*.bak
+docker-compose*.yml
+
+# Arquivos de log
+*.log
+
+# Arquivos de dados sensíveis
+.env
+*.pem
+*.key
+
+# Arquivos e diretórios gerados durante a execução
+instance/
+.webassets-cache
+
+# Diretórios e arquivos específicos do Terraform
+.terraform
+*.tfstate
+*.tfstate.backup
+
+# Arquivos de cache do sistema
+.DS_Store
+Thumbs.db
+
+# Arquivos de editor/IDE específicos
+.idea/
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project
+.vscode/

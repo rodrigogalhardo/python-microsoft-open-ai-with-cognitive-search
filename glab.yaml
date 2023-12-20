@@ -1,0 +1,41 @@
+stages:
+  - test
+  - build
+  - deploy
+
+variables:
+  # Variáveis globais (ajuste conforme necessário)
+  TERRAFORM_VERSION: "1.0.0" # Exemplo de versão do Terraform
+  DOCKER_IMAGE_NAME: "nome_da_imagem_personalizado" # Nome da imagem Docker
+
+before_script:
+  # Instalar dependências necessárias
+  - apt-get update -y && apt-get install -y make
+  # Caso faça seus Pipelines em Terraform (ajuste conforme necessário)
+  - apt-get install openssh-client
+  - curl -fsSL https://apt.releases.hashicorp.com/gpg | apt-key add -
+  - apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+  - apt-get update && apt-get install terraform=${TERRAFORM_VERSION}
+  - eval $(ssh-agent -s)
+  - echo "$PRIVATE_SSH_KEY" | tr -d '\r' | ssh-add -
+  - mkdir -p ~/.ssh
+  - chmod 700 ~/.ssh
+  - ssh-keyscan -H 'gitlab.com' >> ~/.ssh/known_hosts
+  - chmod 644 ~/.ssh/known_hosts
+
+test:
+  stage: test
+  script:
+    - make test
+
+build:
+  stage: build
+  script:
+    - make build DOCKER_IMAGE_NAME=$DOCKER_IMAGE_NAME
+
+deploy:
+  stage: deploy
+  script:
+    - make deploy
+  only:
+    - master
