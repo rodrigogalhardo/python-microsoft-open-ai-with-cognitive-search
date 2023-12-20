@@ -12,7 +12,7 @@ ENV/
 .coverage
 
 # python Notebooks
-*.ipynb
+#*.ipynb
 
 # Diretórios e arquivos de configuração do Docker
 .dockerignore
